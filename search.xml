@@ -8,7 +8,7 @@
       <link href="/2023/10/12/Qt-C-%E6%A8%A1%E6%8B%9FQQ%E9%80%9A%E4%BF%A1/"/>
       <url>/2023/10/12/Qt-C-%E6%A8%A1%E6%8B%9FQQ%E9%80%9A%E4%BF%A1/</url>
       
-        <content type="html"><![CDATA[<h3 id="遇到的基本问题"><a href="#遇到的基本问题" class="headerlink" title="遇到的基本问题"></a>遇到的基本问题</h3><p>当使用QT做可视化界面的时候，我们知道connect函数是连接函数，用于连接信号与槽，但connect在C&#x2F;C++的socket网络编程中也是一个必不可少的函数，作用是发送连接请求，建立tcp连接。<br>在connect前面加上::双冒号即可<br>究其根本，“::”意味着当存在具有相同名称的局部变量时，要访问全局变量，QT的编程都是在QWidget等类的内部，而socket的connect相当于一个全局的函数，不加::使用的就是QT的connect函数，加上::使用的就是全局的connect函数（socket）。</p><h3 id="后期计划"><a href="#后期计划" class="headerlink" title="后期计划"></a>后期计划</h3><ol><li>用户数据存放于数据库</li><li>服务器使用boost asio的异步</li><li>增加登录界面</li><li>……</li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h3><p>使用Qt加C++实现的客户端 C++实现的服务端<br>网络编程使用的window的socket<br>主要实现了类似qq群聊功能</p><h3 id="遇到的基本问题"><a href="#遇到的基本问题" class="headerlink" title="遇到的基本问题"></a>遇到的基本问题</h3><p>当使用QT做可视化界面的时候，我们知道connect函数是连接函数，用于连接信号与槽，但connect在C&#x2F;C++的socket网络编程中也是一个必不可少的函数，作用是发送连接请求，建立tcp连接。<br>在connect前面加上::双冒号即可<br>究其根本，“::”意味着当存在具有相同名称的局部变量时，要访问全局变量，QT的编程都是在QWidget等类的内部，而socket的connect相当于一个全局的函数，不加::使用的就是QT的connect函数，加上::使用的就是全局的connect函数（socket）。</p><p>Qt使用多线程的问题<br>是因为在主线程之外操作了GUI界面，子线程不能直接操作GUI界面<br>解决方法：<br>可以在 GUI 的主线程中添加一个中间函数作为槽函数，中间函数再调用操作 GUI 部件的函数</p><h3 id="后期计划"><a href="#后期计划" class="headerlink" title="后期计划"></a>后期计划</h3><ol><li>用户数据存放于数据库</li><li>服务器使用boost asio的异步</li><li>增加登录界面</li><li>……</li></ol>]]></content>
       
       
       <categories>
@@ -22,9 +22,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> Qt </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -62,19 +62,6 @@
             <tag> 网络编程 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2023/10/08/hello-world/"/>
-      <url>/2023/10/08/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
